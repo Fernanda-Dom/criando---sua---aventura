@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aventura na Floresta Encantada</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <h1>Aventura na Floresta Encantada</h1>
+        
+        <!-- Imagem inicial -->
+        <div id="image-container">
+            <img src="images/forest.jpg" alt="Floresta Encantada" id="scene-image">
+        </div>
+
+        <!-- Texto da história -->
+        <div id="story">
+            <p>Você acorda em uma floresta misteriosa, cheia de árvores altas e uma neblina densa. O que você fará?</p>
+        </div>
+
+        <!-- Botões de escolha -->
+        <div id="choices">
+            <button onclick="choose('entrarFloresta')">Entrar mais fundo na floresta</button>
+            <button onclick="choose('sairFloresta')">Tentar sair da floresta</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+/* Reset de margens e padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #2f2f2f;
+    color: #f2f2f2;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+#game-container {
+    background-color: #3a3a3a;
+    border-radius: 15px;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #d4af37;
+}
+
+#image-container {
+    margin-bottom: 20px;
+}
+
+#scene-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+#story p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    margin: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 80%;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+let storyText = document.getElementById('story');
+let choices = document.getElementById('choices');
+let sceneImage = document.getElementById('scene-image');
+
+// Função principal de escolha
+function choose(option) {
+    if (option === 'entrarFloresta') {
+        storyText.innerHTML = '<p>Você decide seguir mais fundo na floresta. A névoa fica mais espessa e você começa a ouvir sons estranhos. De repente, uma figura aparece à sua frente, uma criatura mística da floresta.</p>';
+        choices.innerHTML = `
+            <button onclick="choose('falarComCriatura')">Falar com a criatura</button>
+            <button onclick="choose('fugir')">Fugir para um lado seguro</button>
+        `;
+        sceneImage.src = 'images/mystical_creature.jpg';  // Mudando a imagem para uma criatura mística
+    } else if (option === 'sairFloresta') {
+        storyText.innerHTML = '<p>Você tenta sair da floresta, mas o caminho parece se fechar a cada passo. Árvores se movem, criando um labirinto ao seu redor.</p>';
+        choices.innerHTML = `
+            <button onclick="choose('entrarCaverna')">Entrar em uma caverna que aparece à frente</button>
+            <button onclick="choose('continuarTentando')">Continuar tentando sair</button>
+        `;
+        sceneImage.src = 'images/forest_exit.jpg';  // Mudando para uma imagem de floresta fechando
+    } else if (option === 'falarComCriatura') {
+        storyText.innerHTML = '<p>A criatura fala em uma língua antiga e lhe oferece uma escolha: um feitiço de proteção ou um mapa para a saída da floresta. Qual você escolhe?</p>';
+        choices.innerHTML = `
+            <button onclick="choose('aceitarFeitico')">Aceitar o feitiço de proteção</button>
+            <button onclick="choose('aceitarMapa')">Aceitar o mapa para a saída</button>
+        `;
+        sceneImage.src = 'images/creature_talk.jpg';  // Mudando para uma imagem de criatura falando
+    } else if (option === 'fugir') {
+        storyText.innerHTML = '<p>Você corre rapidamente para longe da criatura, mas acaba se perdendo ainda mais na floresta. A névoa parece tomar conta de sua visão...</p>';
+        choices.innerHTML = `<button onclick="restartGame()">Tentar novamente</button>`;
+        sceneImage.src = 'images/forest_mist.jpg';  // Mudando para uma imagem de névoa densa na floresta
+    } else if (option === 'entrarCaverna') {
+        storyText.innerHTML = '<p>A caverna parece acolhedora, mas logo você percebe que está cheia de armadilhas antigas. Você precisará usar sua inteligência para escapar.</p>';
+        choices.innerHTML = `
+            <button onclick="choose('resolverEnigma')">Resolver o enigma da caverna</button>
+            <button onclick="choose('fugirCaverna')">Fugir da caverna antes de ser pego</button>
+        `;
+        sceneImage.src = 'images/cave.jpg';  // Mudando para uma imagem de caverna sombria
+    } else if (option === 'continuarTentando') {
+        storyText.innerHTML = '<p>Você continua tentando sair, mas as árvores começam a se mover ao seu redor. Elas parecem te prender cada vez mais. Você está preso na floresta encantada.</p>';
+        choices.innerHTML = `<button onclick="restartGame()">Tentar novamente</button>`;
+        sceneImage.src = 'images/trees_moving.jpg';  // Mudando para uma imagem de árvores movendo-se
+    } else if (option === 'aceitarFeitico') {
+        storyText.innerHTML = '<p>Você aceita o feitiço de proteção. Imediatamente, um brilho suave envolve seu corpo, e você consegue sair da floresta sem ser perseguido. Você é livre!</p>';
+        choices.innerHTML = `<button onclick="restartGame()">Jogar novamente</button>`;
+        sceneImage.src = 'images/freedom.jpg';  // Mudando para uma imagem de liberdade
+    } else if (option === 'aceitarMapa') {
+        storyText.innerHTML = '<p>Você aceita o mapa da criatura. Seguindo suas orientações, você encontra a saída da floresta e volta para o mundo real. Missão cumprida!</p>';
+        choices.innerHTML = `<button onclick="restartGame()">Jogar novamente</button>`;
+        sceneImage.src = 'images/exit_forest.jpg';  // Mudando para uma imagem da saída da floresta
+    } else if (option === 'fugirCaverna') {
+        storyText.innerHTML = '<p>Você tenta fugir da caverna, mas acaba caindo em uma armadilha. A aventura termina aqui.</p>';
+        choices.innerHTML = `<button onclick="restartGame()">Tentar novamente</button>`;
+        sceneImage.src = 'images/trap.jpg';  // Mudando para uma imagem de armadilha
+    }
+}
+
+// Função para reiniciar o jogo
+function restartGame() {
+    storyText.innerHTML = '<p>Você acorda em uma floresta misteriosa, cheia de árvores altas e uma neblina densa. O que você fará?</p>';
+    choices.innerHTML = `
+        <button onclick="choose('entrarFloresta')">Entrar mais fundo na floresta</button>
+        <button onclick="choose('sairFloresta')">Tentar sair da floresta</button>
+    `;
+    sceneImage.src = 'images/forest.jpg';  // Imagem inicial da floresta
+}
