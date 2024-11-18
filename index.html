@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Em busca da cidade perdida</title>
+</head>
+<body>
+    <main>
+        <div class="passo ativo" id="passo-0">
+            <img src="img/Cenario-passo0.jpg" alt="">
+            <p>Um dia desses, dentro de um livro da biblioteca da escola, eu descobri uma carta antiga sobre uma cidade perdida, escondida por riquezas e belezas naturais. Nessa carta, a autora deixa algumas pistas para encontrá-la e eu decidi segui-las!</p>
+            <button class="btn-proximo" data-proximo="1">Rio de Janeiro</button>
+            <button class="btn-proximo" data-proximo="2">Pernambuco</button>
+        </div>
+        <div class="passo" id="passo-1">
+            <p>Você começa sua jornada no Rio de Janeiro, subindo o Pico da Tijuca ao amanhecer para encontrar a primeira pista.</p>
+            <button class="btn-proximo" data-proximo="3">Procurar a pista no topo do pico</button>
+            <button class="btn-proximo" data-proximo="4">Desistir e voltar para casa</button>
+        </div>
+        <div class="passo" id="passo-2">
+            <p>Pernambuco, você visita a histórica cidade de Olinda. Na carta, uma das pistas indica que para localizar a entrada para a cidade perdida você deve procurar a próxima pista em um dos pontos turísticos da cidade. Por qual você começa?</p>
+            <button class="btn-proximo" data-proximo="5">Investigar as igrejas antigas</button>
+            <button class="btn-proximo" data-proximo="6">Explorar as praias próximas</button>
+        </div>
+        <div class="passo" id="passo-3">
+            <p>Você encontrou a primeira pista! É um mapa antigo que leva a um lugar secreto na floresta.</p>
+            <button class="btn-proximo" data-proximo="7">Seguir o mapa</button>
+            <button class="btn-proximo" data-proximo="8">Decidir voltar</button>
+        </div>
+        <div class="passo" id="passo-4">
+            <img src="img/voltando-casa.jpg" alt="Imagem voltando para casa">
+            <p>Você decidiu voltar para casa. A aventura acaba aqui.</p>
+            <button class="btn-proximo" data-proximo="0">Recomeçar</button>
+        </div>
+        <div class="passo" id="passo-5">
+            <p>Nas igrejas antigas, você encontra uma inscrição que fala sobre a cidade perdida. Está cada vez mais perto!</p>
+            <button class="btn-proximo" data-proximo="7">Procurar mais pistas</button>
+            <button class="btn-proximo" data-proximo="8">Decidir voltar</button>
+        </div>
+        <div class="passo" id="passo-6">
+            <p>Enquanto explora as praias, você encontra um artefato misterioso. Pode ser uma pista!</p>
+            <button class="btn-proximo" data-proximo="7">Investigar o artefato</button>
+            <button class="btn-proximo" data-proximo="8">Decidir voltar</button>
+        </div>
+        <div class="passo" id="passo-7">
+            <img src="img/cidade-perdida.jpg" alt="Cidade perdida FIM!">
+            <p>Você seguiu as pistas e finalmente encontrou a entrada da cidade perdida! A aventura foi incrível!</p>
+            <button class="btn-proximo" data-proximo="0">Recomeçar</button>
+        </div>
+        <div class="passo" id="passo-8">
+            <img src="img/voltando-casa.jpg" alt="Imagem voltando para casa">
+            <p>Você decidiu que não vale a pena continuar a busca e decidiu voltar para casa. A aventura acaba aqui.</p>
+            <button class="btn-proximo" data-proximo="0">Recomeçar</button>
+        </div>
+        
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
